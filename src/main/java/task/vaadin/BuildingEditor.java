@@ -124,6 +124,10 @@ public class BuildingEditor extends VerticalLayout implements KeyNotifier {
         changeHandler.onChange();
     }
 
+
+
+
+
     public void editEmployee(Building emp) {
         if (emp == null) {
             setVisible(false);
