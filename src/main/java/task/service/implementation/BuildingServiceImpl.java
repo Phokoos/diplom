@@ -8,6 +8,7 @@ import task.entity.Building;
 import task.repository.BuildingRepository;
 import task.service.BuildingService;
 
+import javax.persistence.Column;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -67,7 +68,12 @@ public class BuildingServiceImpl implements BuildingService {
                 building1.setPeople(buildingDto.getPeople());
                 building1.setPeopleWithDisabilities(buildingDto.getPeopleWithDisabilities());
                 building1.setFloors(buildingDto.getFloors());
-
+                building1.setPrimaryMeans(buildingDto.getPrimaryMeans());
+                building1.setExternalWaterSupply(buildingDto.getExternalWaterSupply());
+                building1.setInternalWaterSupply(buildingDto.getInternalWaterSupply());
+                building1.setFireProtectionSystems(buildingDto.getFireProtectionSystems());
+                building1.setStaircase(buildingDto.getStaircase());
+                building1.setPhoneNumber(buildingDto.getPhoneNumber());
 
                 buildingRepository.deleteByGuid(guid);
                 buildingRepository.save(building1);

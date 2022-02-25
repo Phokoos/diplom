@@ -40,5 +40,23 @@ public class Building {
     @Column
     private String floors;
 
+    @Column
+    private String primaryMeans;
+
+    @Column
+    private String externalWaterSupply;
+
+    @Column
+    private String internalWaterSupply;
+
+    @Column
+    private String fireProtectionSystems;
+
+    @Column
+    private String staircase;
+
+    @Column
+    private String phoneNumber;
+
 
 }

@@ -28,12 +28,19 @@ public class BuildingEditor extends VerticalLayout implements KeyNotifier {
     private final BuildingRepository buildingRepository;
     private Building building;
 
-    private TextField address = new TextField("", "address");
+    private TextField address = new TextField("", "Адрес");
     private TextField people = new TextField("", "people");
     private TextField gaz = new TextField("", "gaz");
     private TextField electric = new TextField("", "electric");
     private TextField peopleWithDisabilities = new TextField("", "peopleWithDisabilities");
     private TextField floors = new TextField("", "Поверховість");
+    private TextField primaryMeans = new TextField("", "Первинні засоби пожежогасіння");;
+    private TextField externalWaterSupply = new TextField("", "Зовнішнє протипож. водопостачання");;
+    private TextField internalWaterSupply = new TextField("", "Внутрішнє протипож. водопостачання");;
+    private TextField fireProtectionSystems = new TextField("", "Системи протипожежного захисту");;
+    private TextField staircase = new TextField("", "Кількість тип сходових клітин");;
+    private TextField phoneNumber = new TextField("", "Ном.тел відповідальної особи");;
+
 
     private Button save = new Button("Save");
     private Button cancel = new Button("Cancel");
@@ -56,7 +63,8 @@ public class BuildingEditor extends VerticalLayout implements KeyNotifier {
     }
 
     private void onCreate() {
-        add(address, people, gaz, electric, peopleWithDisabilities, floors, buttons);
+        add(address, people, gaz, electric, peopleWithDisabilities, floors, primaryMeans, externalWaterSupply, internalWaterSupply,
+                fireProtectionSystems, staircase, phoneNumber, buttons);
 
         binder.bindInstanceFields(this);
 
