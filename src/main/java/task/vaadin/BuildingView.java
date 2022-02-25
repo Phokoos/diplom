@@ -32,7 +32,7 @@ public class BuildingView extends VerticalLayout {
 
     private Grid<Building> buildingGrid = new Grid<>(Building.class);
     private final TextField filter = new TextField();
-    private final Button addNewButton = new Button("New building", VaadinIcon.PLUS.create());
+    private final Button addNewButton = new Button("Нова будівля", VaadinIcon.PLUS.create());
     private final HorizontalLayout toolbar = new HorizontalLayout(filter, addNewButton);
 
     @Autowired
@@ -51,10 +51,12 @@ public class BuildingView extends VerticalLayout {
 
         addNewButton.addClickListener(e -> buildingEditor.editEmployee(new Building()));
 
+
         buildingEditor.setChangeHandler(() -> {
             buildingEditor.setVisible(false);
             fillList(filter.getValue());
         });
+
 
         fillList("");
     }
@@ -75,12 +77,12 @@ public class BuildingView extends VerticalLayout {
 
         HorizontalLayout toolbar = new HorizontalLayout(anchor, label);
         toolbar.setSizeFull();
-
         add(toolbar);
     }
 
     private void createFilter() {
-        filter.setPlaceholder("Type to filter buildings");
+        filter.setWidth("500px");
+        filter.setPlaceholder("Фільтер(Враховуйте регістр)");
         filter.setValueChangeMode(ValueChangeMode.EAGER);
         filter.addValueChangeListener(field -> fillList(field.getValue()));
     }
@@ -91,7 +93,21 @@ public class BuildingView extends VerticalLayout {
                 .addValueChangeListener(e -> buildingEditor.editEmployee(e.getValue()));
 
 //        buildingGrid.removeColumnByKey("guid");
-        buildingGrid.getColumnByKey("address").setHeader("Адреса");
+        buildingGrid.getColumnByKey("address").setHeader("Адреса").setWidth("150px");
+        buildingGrid.getColumnByKey("guid").setHeader("ID-номер").setWidth("300px");
+        buildingGrid.getColumnByKey("floors").setHeader("Поверховість");
+        buildingGrid.getColumnByKey("people").setHeader("К. людей");
+        buildingGrid.getColumnByKey("peopleWithDisabilities").setHeader("Люди із Об.Мож.");
+        buildingGrid.getColumnByKey("primaryMeans").setHeader("Первинні зас.");
+        buildingGrid.getColumnByKey("electric").setHeader("Електроенергія");
+        buildingGrid.getColumnByKey("gaz").setHeader("Відключення газу");
+        buildingGrid.getColumnByKey("externalWaterSupply").setHeader("Зов. водопос.");
+        buildingGrid.getColumnByKey("internalWaterSupply").setHeader("Внут. водопос.");
+        buildingGrid.getColumnByKey("fireProtectionSystems").setHeader("Протипож. сис.");
+        buildingGrid.getColumnByKey("staircase").setHeader("Сход. кліт.");
+        buildingGrid.getColumnByKey("phoneNumber").setHeader("Тел. відповідального");
+
+
 //
 //        buildingGrid.addThemeVariants(GridVariant.LUMO_NO_BORDER,
 //                GridVariant.LUMO_NO_ROW_BORDERS, GridVariant.LUMO_ROW_STRIPES);

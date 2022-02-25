@@ -29,28 +29,29 @@ public class BuildingEditor extends VerticalLayout implements KeyNotifier {
     private Building building;
 
     private TextField address = new TextField("", "Адрес");
-    private TextField people = new TextField("", "people");
-    private TextField gaz = new TextField("", "gaz");
-    private TextField electric = new TextField("", "electric");
-    private TextField peopleWithDisabilities = new TextField("", "peopleWithDisabilities");
-    private TextField floors = new TextField("", "Поверховість");
-    private TextField primaryMeans = new TextField("", "Первинні засоби пожежогасіння");;
-    private TextField externalWaterSupply = new TextField("", "Зовнішнє протипож. водопостачання");;
-    private TextField internalWaterSupply = new TextField("", "Внутрішнє протипож. водопостачання");;
-    private TextField fireProtectionSystems = new TextField("", "Системи протипожежного захисту");;
-    private TextField staircase = new TextField("", "Кількість тип сходових клітин");;
-    private TextField phoneNumber = new TextField("", "Ном.тел відповідальної особи");;
+    private TextField people = new TextField("", "Кількість мешканців (пд'їзд/будинок)");
+    private TextField gaz = new TextField("", "Місце знаходження засувок мереж газопостачання під'їзду/будівлі");
+    private TextField electric = new TextField("", "Місце знеструмлення під'їзу/будівлі");
+    private TextField peopleWithDisabilities = new TextField("", "Кількість та місця перебування осіб віднесених до маломобільної групи населення");
+    private TextField floors = new TextField("", "Поверховість будувлі");
+    private TextField primaryMeans = new TextField("", "Місце розташування первинних засобів пожежогасіння");;
+    private TextField externalWaterSupply = new TextField("", "Місце розташування джерел зовнішнього протипожежного водопостачання");;
+    private TextField internalWaterSupply = new TextField("", "Наявність мереж внутрішнього протипожежного водопостачання під'їзду/будівлі");;
+    private TextField fireProtectionSystems = new TextField("", "Наявність та вид систем протипожежного захисту (сигналізація, оповіщення, управління евакуюванням, димовидення)");;
+    private TextField staircase = new TextField("", "Кількість та тип сходових клітин");;
+    private TextField phoneNumber = new TextField("", "Номер телефону відповідальної особи під'їзду/будівлі");;
 
 
-    private Button save = new Button("Save");
-    private Button cancel = new Button("Cancel");
-    private Button delete = new Button("Delete");
+    private Button save = new Button("Зберегти");
+    private Button cancel = new Button("Відмінити");
+    private Button delete = new Button("Видалити");
     private HorizontalLayout buttons = new HorizontalLayout(save, cancel, delete);
     private Binder<Building> binder = new Binder<>(Building.class);
     private Dialog dialog = new Dialog();
 
     @Setter
     private ChangeHandler changeHandler;
+
 
     public interface ChangeHandler {
         void onChange();
@@ -67,6 +68,19 @@ public class BuildingEditor extends VerticalLayout implements KeyNotifier {
                 fireProtectionSystems, staircase, phoneNumber, buttons);
 
         binder.bindInstanceFields(this);
+
+        address.setWidth("900px");
+        people.setWidth("900px");
+        gaz.setWidth("900px");
+        electric.setWidth("900px");
+        peopleWithDisabilities.setWidth("900px");
+        floors.setWidth("900px");
+        primaryMeans.setWidth("900px");
+        externalWaterSupply.setWidth("900px");
+        internalWaterSupply.setWidth("900px");
+        fireProtectionSystems.setWidth("900px");
+        staircase.setWidth("900px");
+        phoneNumber.setWidth("900px");
 
         setSpacing(true);
         initializeDialog();
@@ -86,7 +100,7 @@ public class BuildingEditor extends VerticalLayout implements KeyNotifier {
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         HorizontalLayout horizontalLayout2 = new HorizontalLayout();
 
-        Label label = new Label("You must complete all fields");
+        Label label = new Label("Ви повинні заповнити поле про адрес");
         label.setTitle("Error massage");
         label.getStyle()
                 .set("fontWeight", "bold")
